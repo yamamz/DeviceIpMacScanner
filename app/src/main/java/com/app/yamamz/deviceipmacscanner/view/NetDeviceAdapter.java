@@ -1,5 +1,6 @@
 package com.app.yamamz.deviceipmacscanner.view;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,6 +23,14 @@ public class NetDeviceAdapter extends RecyclerView.Adapter<NetDeviceAdapter.View
     private List<Device> addresses;
     private int rowLayout;
 
+    @SuppressLint("StaticFieldLeak")
+    public static Context context;
+    ViewHolder viewHolder;
+    int lastPosition = -1;
+
+
+    // Allows to remember the last item shown on screen
+
 
 
     private Context mContext;
@@ -36,7 +45,10 @@ public class NetDeviceAdapter extends RecyclerView.Adapter<NetDeviceAdapter.View
     @Override
     public NetDeviceAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(rowLayout, viewGroup, false);
-        return new ViewHolder(v);
+       return new ViewHolder(v);
+
+       // viewholder = new ViewHolder(v);
+      //  return viewholder;
     }
 
     @Override
@@ -92,13 +104,17 @@ public class NetDeviceAdapter extends RecyclerView.Adapter<NetDeviceAdapter.View
 
         public ViewHolder(View itemView) {
             super(itemView);
+
             deviceName = (TextView) itemView.findViewById(R.id.deviceName);
             deviceIp = (TextView) itemView.findViewById(R.id.deviceIp);
             macAdd = (TextView)itemView.findViewById(R.id.macAdd);
             imageView=(ImageView) itemView.findViewById(R.id.deviceLogo);
 
+            context = itemView.getContext();
+
         }
     }
+
 
 
 }

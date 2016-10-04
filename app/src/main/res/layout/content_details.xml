@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorPrimaryDark1"
+    android:id="@+id/content_details"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin1"
+    android:paddingRight="@dimen/activity_horizontal_margin1"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.app.yamamz.deviceipmacscanner.DetailsActivity"
+    tools:showIn="@layout/activity_details">
+
+    <LinearLayout
+        android:layout_marginLeft="15dp"
+        android:id="@+id/row1"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_perm_device_information_white_36dp"
+            />
+        <LinearLayout
+            android:layout_marginLeft="@dimen/Icon_margin"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+
+        <TextView
+
+
+
+            android:layout_centerInParent="true"
+            android:textColor="@color/White"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="IP ADDRESS"
+            android:id="@+id/ipAddressLabel"/>
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/TextDetails"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="IPAdd"
+                android:id="@+id/ipAddress"/>
+    </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="15dp"
+        android:id="@+id/row2"
+        android:layout_below="@+id/row1"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_settings_ethernet_white_36dp"
+            />
+        <LinearLayout
+            android:layout_marginLeft="@dimen/Icon_margin"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+
+            <TextView
+
+
+
+                android:layout_centerInParent="true"
+                android:textColor="@color/White"
+                android:textSize="12sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="MAC ADDRESS"
+                android:id="@+id/macLabel"/>
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/TextDetails"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="IP"
+                android:id="@+id/macAddress"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="15dp"
+        android:id="@+id/row3"
+        android:layout_below="@+id/row2"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_important_devices_white_36dp"
+            />
+        <LinearLayout
+            android:layout_marginLeft="@dimen/Icon_margin"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+
+            <TextView
+
+
+
+
+                android:textColor="@color/White"
+                android:textSize="12sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="HOST NAME"
+                android:id="@+id/HostLabel"/>
+
+            <TextView
+
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/TextDetails"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="IP"
+                android:id="@+id/hostAdd"/>
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginLeft="15dp"
+        android:id="@+id/row4"
+        android:layout_below="@+id/row3"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_language_white_36dp"
+            />
+        <LinearLayout
+            android:layout_marginLeft="@dimen/Icon_margin"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+
+            <TextView
+
+
+
+
+                android:textColor="@color/White"
+                android:textSize="12sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="EXTERNAL IP"
+                android:id="@+id/EXTERNAL_LABEL"/>
+
+            <TextView
+
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/TextDetails"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="--"
+                android:id="@+id/External"/>
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginLeft="15dp"
+        android:id="@+id/row5"
+        android:layout_below="@+id/row4"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_compare_arrows_white_36dp"
+            />
+        <LinearLayout
+            android:layout_marginLeft="@dimen/Icon_margin"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+
+            <TextView
+
+
+
+                android:layout_centerInParent="true"
+                android:textColor="@color/White"
+                android:textSize="12sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="PING"
+                android:id="@+id/PING_label"/>
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/TextDetails"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="IP"
+                android:id="@+id/ping"/>
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+    <ProgressBar
+        android:id="@+id/progressdetails"
+        android:layout_centerInParent="true"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <android.support.v7.widget.RecyclerView
+
+        android:layout_below="@+id/row5"
+        android:id="@+id/listPort1"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

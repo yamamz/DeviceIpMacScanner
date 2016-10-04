@@ -30,7 +30,7 @@ public class Pinger {
     private  DatabaseHelpher helpher;
     private static List<Device> dbList;
     public static List<Device> getDevicesOnNetwork(String subnet){
-        LinkedList<InetAddress> resAddresses = new LinkedList<InetAddress>();
+        LinkedList<InetAddress> resAddresses = new LinkedList<>();
         DiscoverRunner[] tasks = new DiscoverRunner[NUMTHREADS];
 
         Thread[] threads = new Thread[NUMTHREADS];

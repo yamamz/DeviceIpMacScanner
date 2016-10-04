@@ -19,7 +19,7 @@ public class DiscoverRunner implements Runnable {
     private Integer startAdd;
     private Integer numAdds;
 
-    public DiscoverRunner(String subnet, Integer start, Integer steps) {
+    DiscoverRunner(String subnet, Integer start, Integer steps) {
         this.subnet = subnet;
         this.startAdd = start;
         this.numAdds = steps;
@@ -57,7 +57,7 @@ public class DiscoverRunner implements Runnable {
         }
     }
 
-    public List<InetAddress> getResults() {
+    List<InetAddress> getResults() {
         return results;
     }
 
