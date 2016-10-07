@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
     android:color="@color/black1">
-    <item android:drawable="@color/btnColorTap"/>
+    <item android:drawable="@color/transparent80"/>
 </ripple>

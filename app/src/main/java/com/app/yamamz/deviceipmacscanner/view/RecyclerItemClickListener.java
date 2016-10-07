@@ -13,6 +13,8 @@ import android.view.View;
 public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
     private OnItemClickListener mListener;
 
+
+
     public interface OnItemClickListener {
         public void onItemClick(View view, int position);
     }
@@ -26,7 +28,11 @@ public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListen
             public boolean onSingleTapUp(MotionEvent e) {
                 return true;
             }
+
+
         });
+
+
     }
 
     @Override

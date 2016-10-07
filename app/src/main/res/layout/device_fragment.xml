@@ -8,9 +8,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     android:padding="2dp">
-
 
     <android.support.v7.widget.LinearLayoutCompat
 android:paddingTop="10dp"
@@ -22,16 +20,13 @@ android:paddingTop="10dp"
         android:layout_alignParentStart="true">
 
         <ImageView
-android:padding="10dp"
-
-
+            android:padding="10dp"
             android:id="@+id/deviceLogo"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/ic_important_devices_blue_600_24dp"
            />
 
         <RelativeLayout
@@ -42,13 +37,11 @@ android:padding="10dp"
             android:padding="2dp">
 
             <TextView
-
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:id="@+id/deviceIp"
                 android:text="@string/ipPlaceholder"
                 android:textSize="14sp"
-
                 android:layout_width="wrap_content"
                 android:textColor="@color/colorText"
                 android:layout_height="wrap_content"/>
@@ -57,25 +50,22 @@ android:padding="10dp"
                 android:layout_marginBottom="5dp"
                 android:id="@+id/macAdd"
                 android:text="@string/macHolder"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:layout_below="@id/deviceIp"
                 android:layout_width="wrap_content"
                 android:textColor="@color/colorText"
                 android:layout_height="wrap_content"/>
 
-
-
-
             <TextView
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-
                 android:text="@string/deviceName"
                 android:id="@+id/deviceName"
                 android:textSize="14sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorText"/>
+                android:textColor="@color/colorText"
+                />
 
 
 

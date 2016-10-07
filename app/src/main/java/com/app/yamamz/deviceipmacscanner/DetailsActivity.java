@@ -102,7 +102,6 @@ private String IP;
 
        // prepareMovieData();
 
-
         Transition returnTrans = new Explode();
         getWindow().setReturnTransition(returnTrans);
 ipAdd.setText(IP);
@@ -230,7 +229,7 @@ ipAdd.setText(IP);
 
         }
 
-        else{
+        else if(Ping.onAddress(IP).doPing().isReachable){
 
 
             PingResult pingResult = Ping.onAddress(ipAddress).setTimeOutMillis(1000).doPing();
@@ -241,6 +240,13 @@ ipAdd.setText(IP);
 
 
         }
+
+        else if(!Ping.onAddress(IP).doPing().isReachable){
+
+            ping1.setText("Unreachable");
+
+        }
+
         }
 
     private void doPortScan() throws UnknownHostException {

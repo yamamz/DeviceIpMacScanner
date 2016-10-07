@@ -4,51 +4,53 @@ import android.util.Log;
 
 import com.stealthcopter.networktools.Ping;
 
-import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by Admin on 9/27/2016.
+ * Created by AMRI on 10/6/2016.
  */
-public class DiscoverRunner implements Runnable {
+
+public class DiscoverOL implements Runnable {
 
     private static final String CMD = "/system/bin/ping -q -n -w 1 -c 1 %s";
     //private static final String CMD = "/system/bin/ping -c 1 %s";
     private static final String TAG = "DiscoverRunner";
-    private List<InetAddress> results;
+    private List<Boolean> results;
 
     private String subnet;
     private Integer startAdd;
     private Integer numAdds;
+    private myImageURL imageURL=new myImageURL();
 
-   public DiscoverRunner(String subnet, Integer start, Integer steps) {
+    DiscoverOL(String subnet, Integer start, Integer steps) {
         this.subnet = subnet;
         this.startAdd = start;
         this.numAdds = steps;
-        results = new LinkedList<InetAddress>();
+        results = new LinkedList<Boolean>();
     }
 
     @Override
     public void run() {
         int timeout = 3000;
         for (int i = startAdd; i < startAdd + numAdds; i++) {
-          String  host = subnet + "." + i;
-
 
             try {
-                InetAddress a = InetAddress.getByName(host);
 
-                if(Ping.onAddress(host).setTimeOutMillis(timeout).doPing().isReachable){
 
-                    results.add(a);
+                if(Ping.onAddress(subnet).setTimeOutMillis(timeout).doPing().isReachable){
+
+                    results.add(true);
                 }
 
+                else if(!Ping.onAddress(subnet).setTimeOutMillis(timeout).doPing().isReachable){
 
-
-
+                    results.add(false);
+                }
             } catch (UnknownHostException e) {
+
+                results.add(false);
                 e.printStackTrace();
             }
 
@@ -89,11 +91,12 @@ public class DiscoverRunner implements Runnable {
         }
 
 
-        Log.i(TAG, "Devices found "+ results.size());
+        Log.i(TAG, "Devices found  ccc"+ results.size());
     }
 
-    List<InetAddress> getResults() {
+ public  List<Boolean> getResults() {
         return results;
     }
 
 }
+
