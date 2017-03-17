@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity   {
     private TextView signalStrength;
     private TextView ssid;
     private TextView bssid;
-    private Realm realm;
+    private Realm realmDB;
     private Handler mHandler = new Handler();
     private  TextView ipExternal;
     private BroadcastReceiver receiver;
@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity   {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarDetails);
         setSupportActionBar(toolbar);
          Realm.init(this);
-         realm = Realm.getDefaultInstance();
+         realmDB = Realm.getDefaultInstance();
          pinger=new PingerForActiveDevice(this);
 
 
@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity   {
             @Override
             public void onClick(View view) {
                 getPreferences();
-                realm.executeTransactionAsync(new Realm.Transaction() {
+                realmDB.executeTransactionAsync(new Realm.Transaction() {
                     @Override
                     public void execute(Realm bgRealm) {
                    //     bgRealm.delete(Device.class);
@@ -413,7 +413,7 @@ void getPreferences(){
         ConnectivityManager connManager = (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         ArrayList<Device> AllDeviceSave = new ArrayList<Device>();
-        for (Device devices : realm.where(Device.class).findAll()) {
+        for (Device devices : realmDB.where(Device.class).findAll()) {
             int i=0;
             AllDeviceSave.add(new Device(i, devices.getIpAddress(), devices.getMacAddress(), devices.getDeviceName(), imageData.drawableArray[0],imageData.TextColor[0],imageData.TextColor[0],imageData.TextColor[0],imageData.TextColor[0]));
 
@@ -446,7 +446,7 @@ void getPreferences(){
         ArrayList<Device> AllDeviceSave = new ArrayList<>();
         myImageURL imageData = new myImageURL();
 
-        for (Device devices : realm.where(Device.class).findAllSorted("ipAddress", Sort.ASCENDING)) {
+        for (Device devices : realmDB.where(Device.class).findAllSorted("ipAddress", Sort.ASCENDING)) {
 
             int i=0;
             AllDeviceSave.add(new Device(i, devices.getIpAddress(), devices.getMacAddress(), devices.getDeviceName(), imageData.drawableArray[0],imageData.TextColor[0],imageData.TextColor[0],imageData.TextColor[0],imageData.TextColor[0]));
@@ -465,7 +465,7 @@ void getPreferences(){
     protected void onPostResume() {
         super.onPostResume();
         Realm.init(this);
-        realm = Realm.getDefaultInstance();
+        realmDB = Realm.getDefaultInstance();
 
     }
 
@@ -476,7 +476,7 @@ void getPreferences(){
     public void onRestart() {
         super.onRestart();
         Realm.init(this);
-        realm = Realm.getDefaultInstance();
+        realmDB = Realm.getDefaultInstance();
         registerReceiver(this.receiver, this.intentFilter);
     }
 
@@ -513,14 +513,14 @@ void getPreferences(){
     public void onResume(){
 
         Realm.init(this);
-        realm = Realm.getDefaultInstance();
+        realmDB = Realm.getDefaultInstance();
 
         super.onResume();
     }
 
     @Override
     public void onPause() {
-        realm.close();
+        realmDB.close();
 
         super.onPause();
     }
@@ -528,7 +528,7 @@ void getPreferences(){
     public void onDestroy() {
 
             super.onDestroy();
-        realm.close();
+        realmDB.close();
 
             mHandler.removeCallbacksAndMessages(null);
 
@@ -663,7 +663,7 @@ void getPreferences(){
 
             final ArrayList<Device> AllDeviceSave = new ArrayList<Device>();
 
-            realm.executeTransactionAsync(new Realm.Transaction() {
+            realmDB.executeTransactionAsync(new Realm.Transaction() {
                 @Override
                 public void execute(Realm bgRealm) {
 
@@ -677,7 +677,7 @@ void getPreferences(){
                 public void onSuccess () {
 
 
-                    for (Device devices : realm.where(Device.class).findAllSorted("ipAddress",Sort.ASCENDING)) {
+                    for (Device devices : realmDB.where(Device.class).findAllSorted("ipAddress",Sort.ASCENDING)) {
 
                         int i=0;
                         AllDeviceSave.add(new Device(i, devices.getIpAddress(),
@@ -781,7 +781,7 @@ void getPreferences(){
 
 
             final ArrayList<Device> AllDeviceSave = new ArrayList<Device>();
-            realm.executeTransactionAsync(new Realm.Transaction() {
+            realmDB.executeTransactionAsync(new Realm.Transaction() {
                 @Override
                 public void execute(Realm bgRealm) {
 
@@ -798,7 +798,7 @@ void getPreferences(){
 
                         myImageURL imageData = new myImageURL();
 
-                        for (Device devices : realm.where(Device.class).findAllSorted("ipAddress", Sort.ASCENDING)) {
+                        for (Device devices : realmDB.where(Device.class).findAllSorted("ipAddress", Sort.ASCENDING)) {
 
                             int i=0;
                             AllDeviceSave.add(new Device(i, devices.getIpAddress(), devices.getMacAddress(), devices.getDeviceName(), devices.getImage(),devices.getTextColorIP(),devices.getTextColorMac(),devices.getTextColorDeviceName(),devices.getTextColorMacVendor()));
