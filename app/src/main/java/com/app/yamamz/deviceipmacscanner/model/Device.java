@@ -1,40 +1,45 @@
 package com.app.yamamz.deviceipmacscanner.model;
 
-import org.droitateddb.entity.Column;
-import org.droitateddb.entity.Entity;
-import org.droitateddb.entity.PrimaryKey;
+
+
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
- * Created by Admin on 9/27/2016.
+ * Created by yamamz on 9/27/2016.
  */
-@Entity
-public class Device {
+
+public class Device extends RealmObject {
+
+
+
 
     @PrimaryKey
-
-    @Column
-    private Integer _id;
-
-    @Column
     private String ipAddress;
-    @Column
+    private Integer _id;
     private String deviceName;
-
-    @Column
     private String macAddress;
-
-
-    @Column
     private Integer image;
 
+    private Integer textColorIP;
+    private Integer textColorMac;
+    private Integer textColorDeviceName;
+    private Integer textColorMacVendor;
 
-    public Device(int _id,String ipAddress, String macAddress, String deviceName, int image ) {
+
+
+
+    public Device(int _id,String ipAddress, String macAddress, String deviceName, int image ,int textColorIP, int textColorMac, int textColorDeviceName, int textColorMacVendor) {
 
         this.ipAddress = ipAddress;
         this.macAddress = macAddress;
         this.deviceName = deviceName;
         this._id=_id;
         this.image=image;
+        this.textColorIP=textColorIP;
+        this.textColorMac=textColorMac;
+        this.textColorDeviceName=textColorDeviceName;
+        this.textColorMacVendor=textColorMacVendor;
 
 
 
@@ -48,8 +53,42 @@ public class Device {
 
 
     }
+
+
+    public Integer getTextColorMacVendor() {
+        return textColorMacVendor;
+    }
+
+    public void setTextColorMacVendor(Integer textColorMacVendor) {
+        this.textColorMacVendor = textColorMacVendor;
+    }
+
     public String getIpAddress() {
         return ipAddress;
+    }
+
+    public Integer getTextColorIP() {
+        return textColorIP;
+    }
+
+    public void setTextColorIP(Integer textColorIP) {
+        this.textColorIP = textColorIP;
+    }
+
+    public Integer getTextColorMac() {
+        return textColorMac;
+    }
+
+    public void setTextColorMac(Integer textColorMac) {
+        this.textColorMac = textColorMac;
+    }
+
+    public Integer getTextColorDeviceName() {
+        return textColorDeviceName;
+    }
+
+    public void setTextColorDeviceName(Integer textColorDeviceName) {
+        this.textColorDeviceName = textColorDeviceName;
     }
 
     public void setIpAddress(String ipAddress) {

@@ -16,14 +16,180 @@ android:background="@color/colorPrimaryDark1"
 
     >
     <ProgressBar
+        android:visibility="gone"
         android:id="@+id/progress"
         android:layout_centerInParent="true"
         style="@style/Widget.AppCompat.ProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+
+    <TableLayout
+
+        android:background="@drawable/riffle_effects"
+        android:id="@+id/deviceInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" >
+
+        <TableRow>
+
+            <TextView
+                android:padding="@dimen/paddingDeviceInfo"
+                android:id="@+id/deviceMacAddressLabel"
+
+                android:layout_height="match_parent"
+                android:text="@string/macAddress"
+                android:textColor="@color/White" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/fab_margin"
+                android:layout_gravity="start"
+                android:id="@+id/deviceMacAddress"
+                android:padding="@dimen/paddingDeviceInfo"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:textColor="@color/colorAccent" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+
+                android:id="@+id/deviceMacVendorLabel"
+                android:padding="@dimen/paddingDeviceInfo"
+                android:layout_height="match_parent"
+                android:text="Vendor"
+                android:textColor="@color/White" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/fab_margin"
+                android:layout_gravity="start"
+                android:id="@+id/deviceMacVendor"
+                android:padding="@dimen/paddingDeviceInfo"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:textColor="@color/colorAccent" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/internalIpAddressLabel"
+                android:padding="@dimen/paddingDeviceInfo"
+                android:layout_height="match_parent"
+                android:text="@string/internalIpLabel"
+                android:textColor="@color/White" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/fab_margin"
+                android:layout_gravity="start"
+                android:id="@+id/internalIpAddress"
+                android:padding="@dimen/paddingDeviceInfo"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:textColor="@color/colorAccent" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/externalIpAddressLabel"
+                android:padding="@dimen/paddingDeviceInfo"
+                android:layout_height="match_parent"
+                android:text="@string/externalIpLabel"
+                android:textColor="@color/White" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/fab_margin"
+                android:layout_gravity="start"
+                android:id="@+id/externalIpAddress"
+                android:padding="@dimen/paddingDeviceInfo"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:text="@string/fetching"
+                android:textColor="@color/colorAccent" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/signalStrengthLabel"
+                android:padding="@dimen/paddingDeviceInfo"
+                android:layout_height="match_parent"
+                android:text="@string/signalLabel"
+                android:textColor="@color/White" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/fab_margin"
+                android:layout_gravity="start"
+                android:id="@+id/signalStrength"
+                android:padding="@dimen/paddingDeviceInfo"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:textColor="@color/colorAccent" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/ssidLabel"
+                android:padding="@dimen/paddingDeviceInfo"
+                android:layout_height="match_parent"
+                android:text="@string/ssid"
+                android:textColor="@color/White" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/fab_margin"
+                android:layout_gravity="start"
+                android:id="@+id/ssid"
+                android:padding="@dimen/paddingDeviceInfo"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:textColor="@color/colorAccent" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:id="@+id/bssidLabel"
+                android:padding="@dimen/paddingDeviceInfo"
+                android:layout_height="match_parent"
+                android:text="@string/bssid"
+                android:textColor="@color/White" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/fab_margin"
+                android:layout_gravity="start"
+                android:id="@+id/bssid"
+                android:padding="@dimen/paddingDeviceInfo"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:textColor="@color/colorAccent" />
+        </TableRow>
+    </TableLayout>
+
+
+
+
     <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="2dp"
+        android:layout_below="@+id/deviceInfo"
         android:id="@+id/list"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</RelativeLayout>
+        android:layout_height="wrap_content"
+      />
+
+
+
+
+
+    </RelativeLayout>

@@ -10,7 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 /**
- * Created by AMRI on 9/28/2016.
+ * Created by yamamz on 9/28/2016.
  */
 
 public class DeviderItemDecoration extends RecyclerView.ItemDecoration {

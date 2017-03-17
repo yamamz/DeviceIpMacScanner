@@ -9,5 +9,8 @@ import com.app.yamamz.deviceipmacscanner.R;
 public class myImageURL {
 
 
-   public Integer[] drawableArray={R.drawable.ic_cast_connected_grey_700_48dp,R.drawable.ic_cast_connected_white_48dp};
+   public Integer[] drawableArray={R.drawable.ic_devices_blue_grey_500_18dp,R.drawable.ic_devices_light_green_a400_18dp};
+   public Integer[] TextColor={R.color.gray,R.color.colorAccent,R.color.White};
+
+
 }

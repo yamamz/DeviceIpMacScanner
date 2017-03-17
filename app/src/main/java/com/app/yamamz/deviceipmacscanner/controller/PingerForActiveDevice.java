@@ -6,14 +6,16 @@ import android.content.Context;
 import com.app.yamamz.deviceipmacscanner.R;
 import com.app.yamamz.deviceipmacscanner.model.Device;
 
-import org.droitateddb.EntityService;
+
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import io.realm.Realm;
+
 /**
- * Created by AMRI on 10/6/2016.
+ * Created by yamamz on 10/6/2016.
  */
 
 public class PingerForActiveDevice {
@@ -28,39 +30,65 @@ public class PingerForActiveDevice {
     private static Context context;
     private static List<Device> allDevice;
 
+    private static Realm realm;
+
     private static List<Integer> resAddresses;
 
 
     public PingerForActiveDevice(Context context) {
 
-        this.context = context;
+        PingerForActiveDevice.context = context;
+
 
     }
 
 
-    public static List<Device> getDevicesOnNetwork() {
+    public static List<Device> getDevicesOnNetwork() throws InterruptedException {
         LinkedList<Integer> resAddresses = new LinkedList<>();
+        LinkedList<Integer> ipTextColor = new LinkedList<>();
+        LinkedList<Integer> MacTextColor = new LinkedList<>();
+        LinkedList<Integer> DeviceNameTextColor = new LinkedList<>();
+        LinkedList<Integer> macVendorTextColor = new LinkedList<>();
 
-        EntityService userService = new EntityService(context, Device.class);
-        allDevice = userService.get();
+       // realm = Realm.getDefaultInstance();
 
-        NUMTHREADS = allDevice.size();
+        Realm.init(context);
+        realm = Realm.getDefaultInstance();
 
-        DiscoverOL[] tasks = new DiscoverOL[NUMTHREADS];
+        ArrayList<Device> AllDevices= new ArrayList<Device>();
+        myImageURL imageData = new myImageURL();
+
+        for (Device devices : realm.where(Device.class).findAll()) {
+
+            int i=0;
+
+            AllDevices.add(new Device(i, devices.getIpAddress(), devices.getMacAddress(), devices.getDeviceName(), devices.getImage(),devices.getTextColorIP(),devices.getTextColorMac(),devices.getTextColorDeviceName(),devices.getTextColorMacVendor()));
+
+            i++;
+        }
+
+
+        //  EntityService userService = new EntityService(context, Device.class);
+       // allDevice = userService.get()
+
+    NUMTHREADS = AllDevices.size();
+
+    DiscoverOL[] tasks = new DiscoverOL[NUMTHREADS];
 
 
         Thread[] threads = new Thread[NUMTHREADS];
 
 
         //Create Tasks and treads
-        for (int i = 0; i < allDevice.size(); i++) {
-            tasks[i] = new DiscoverOL(allDevice.get(i).getIpAddress(), NUMTHREADS / NUMTHREADS * i, NUMTHREADS / NUMTHREADS);
+        for (int i = 0; i < AllDevices.size();i++) {
+            tasks[i] = new DiscoverOL(AllDevices.get(i).getIpAddress(), i, 1);
             threads[i] = new Thread(tasks[i]);
 
         }
         //Starts threads
-        for (int i = 0; i < NUMTHREADS; i++) {
+        for (int i = 0; i < NUMTHREADS;i++) {
             threads[i].start();
+            Thread.sleep(100);
         }
 
         for (int i = 0; i < NUMTHREADS; i++) {
@@ -80,13 +108,22 @@ public class PingerForActiveDevice {
 
                 {
 
-                    if(res==false){
-                        resAddresses.add(R.drawable.ic_cast_connected_grey_700_48dp);
+                    if(!res){
+                        resAddresses.add(R.drawable.ic_devices_blue_grey_500_18dp);
+                        ipTextColor.add(R.color.gray);
+                        MacTextColor.add(R.color.gray);
+                        DeviceNameTextColor.add(R.color.gray);
+                        macVendorTextColor.add(R.color.gray);
                     }
 
                     else {
 
-                        resAddresses.add(R.drawable.ic_cast_connected_white_48dp);
+                        resAddresses.add(R.drawable.ic_devices_light_green_a400_18dp);
+
+                        ipTextColor.add(R.color.White);
+                        MacTextColor.add(R.color.colorAccent);
+                        DeviceNameTextColor.add(R.color.White);
+                        macVendorTextColor.add(R.color.White);
                     }
 
                 }
@@ -99,31 +136,31 @@ public class PingerForActiveDevice {
 
         }
 
-
+        ArrayList<Device> foundDev = new ArrayList<Device>(resAddresses.size());
         try {
 
-            ArrayList<Device> foundDev = new ArrayList<Device>(resAddresses.size());
-            myImageURL imageData = new myImageURL();
+            myImageURL imageDatas = new myImageURL();
 
             String result = "";
             int loc = 0;
-            for (int i = 0; i < allDevice.size(); i++) {
+            for (int i = 0; i < AllDevices.size(); i++) {
 
 
-                foundDev.add(new Device(i, allDevice.get(i).getIpAddress(), allDevice.get(i).getMacAddress(), allDevice.get(i).getDeviceName(), resAddresses.get(i)));
+                foundDev.add(new Device(i, AllDevices.get(i).getIpAddress(), AllDevices.get(i).getMacAddress(), AllDevices.get(i).getDeviceName(), resAddresses.get(i),ipTextColor.get(i),MacTextColor.get(i),DeviceNameTextColor.get(i),macVendorTextColor.get(i)));
 
 
             }
-
-            return foundDev;
 
 
         } catch (Exception e) {
             e.printStackTrace();
 
-            return null;
         }
 
-    }
+
+        return foundDev;
+}
+
+
 
 }

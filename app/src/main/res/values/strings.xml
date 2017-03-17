@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DeviceIpMacScanner</string>
+    <string name="app_name">my IP/Mac Scanner</string>
     <string name="action_settings">Settings</string>
 
     <string name="scanning">Scanning</string>
@@ -12,5 +12,27 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="title_activity_details">DetailsActivity</string>
+
+
+    <string name="macAddress">MAC</string>
+    <string name="macVendor">Vendor</string>
+    <string name="internalIpLabel">LAN IP</string>
+    <string name="externalIpLabel">WAN IP</string>
+    <string name="fetching">Fetching…</string>
+    <string name="signalLabel">Signal/Speed</string>
+    <string name="hostDiscovery">Discover Hosts</string>
+    <string name="ssid">SSID</string>
+    <string name="bssid">BSSID</string>
+    <string name="scanWellKnownPorts">Scan Well Known Ports</string>
+    <string name="scanPortRange">Scan Port Range</string>
+    <string name="resetPortRange">Reset Port Range</string>
+    <string name="openPorts">Open Ports</string>
+    <string name="portRangeStart">Start Port</string>
+    <string name="portRangeStop">Stop Port</string>
+    <string name="noWifi">No WiFi connection</string>
+    <string name="wanHostHint">URL/IP</string>
+    <string name="scanningWarning">WARNING</string>
+    <string name="domainName">Domain Name</string>
+    <string name="dnsLookup">DNS Lookup</string>
 
 </resources>

@@ -12,28 +12,33 @@ import com.app.yamamz.deviceipmacscanner.model.Port;
 import java.util.List;
 
 /**
- * Created by AMRI on 10/2/2016.
+ * Created by yamamz on 10/2/2016.
  */
 
 public class PortsAdapter extends RecyclerView.Adapter<PortsAdapter.MyViewHolder> {
 
-    private List<Port> moviesList;
+    private List<Port> portsList;
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, year, genre;
+        public TextView port, date, count;
+
+
+
 
         public MyViewHolder(View view) {
             super(view);
-            title = (TextView) view.findViewById(R.id.title);
-            genre = (TextView) view.findViewById(R.id.date);
-            year = (TextView) view.findViewById(R.id.position);
+            port = (TextView) view.findViewById(R.id.title);
+            date = (TextView) view.findViewById(R.id.date);
+            count = (TextView) view.findViewById(R.id.position);
         }
     }
 
 
-    public PortsAdapter(List<Port> moviesList) {
-        this.moviesList = moviesList;
+    public PortsAdapter(List<Port> portsList) {
+        this.portsList =  portsList;
     }
+
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -45,14 +50,14 @@ public class PortsAdapter extends RecyclerView.Adapter<PortsAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Port port = moviesList.get(position);
-        holder.title.setText(port.getTitle());
-        holder.genre.setText(port.getGenre());
-        holder.year.setText(port.getYear());
+        Port port = portsList.get(position);
+        holder.port.setText(port.getPort());
+        holder.count.setText(port.getCount());
+        holder.date.setText(port.getDate());
     }
 
     @Override
     public int getItemCount() {
-        return moviesList.size();
+        return portsList.size();
     }
 }

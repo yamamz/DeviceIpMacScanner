@@ -1,7 +1,7 @@
 package com.app.yamamz.deviceipmacscanner.view;
 
 /**
- * Created by AMRI on 9/29/2016.
+ * Created by yamamz on 9/29/2016.
  */
 
 import android.content.Context;

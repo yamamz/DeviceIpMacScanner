@@ -2,14 +2,13 @@ package com.app.yamamz.deviceipmacscanner.controller;
 
 import android.util.Log;
 
-import com.stealthcopter.networktools.Ping;
-
-import java.net.UnknownHostException;
+import java.io.IOException;
+import java.net.InetAddress;
 import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by AMRI on 10/6/2016.
+ * Created by Yamamz on 10/6/2016.
  */
 
 public class DiscoverOL implements Runnable {
@@ -36,7 +35,46 @@ public class DiscoverOL implements Runnable {
         int timeout = 3000;
         for (int i = startAdd; i < startAdd + numAdds; i++) {
 
+
             try {
+                Process exec = Runtime.getRuntime().exec(String.format(CMD, subnet));
+                int i1 = exec.waitFor();
+                if (i1 == 0) {
+                    InetAddress a = InetAddress.getByName(subnet);
+                    Log.i(TAG, "run: " + a.getHostAddress());
+                    Log.i(TAG, "runs: " + a.getCanonicalHostName());
+                    results.add(true);
+                }
+                else{
+
+                    try {
+                        InetAddress a = InetAddress.getByName(subnet);
+
+                        if(a.isReachable(timeout)){
+                            results.add(true);
+                        }
+
+                        else{
+
+                            results.add(false);
+
+                        }
+                    } catch (IOException ioe) {
+
+                        ioe.printStackTrace();
+                    }
+
+
+                }
+
+
+            } catch (IOException | InterruptedException e) {
+
+
+            }
+
+
+        /*    try {
 
 
                 if(Ping.onAddress(subnet).setTimeOutMillis(timeout).doPing().isReachable){
@@ -54,7 +92,7 @@ public class DiscoverOL implements Runnable {
                 e.printStackTrace();
             }
 
-
+*/
 
       /*  try {
                 Process exec = Runtime.getRuntime().exec(String.format(CMD, host));

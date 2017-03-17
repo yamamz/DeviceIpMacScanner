@@ -16,11 +16,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import jcifs.netbios.NbtAddress;
-
 
 /**
- * Created by Admin on 9/27/2016.
+ * Created by yamamz on 9/27/2016.
  */
 public class Pinger {
 
@@ -58,6 +56,7 @@ public class Pinger {
         //Starts threads
         for(int i = 0; i < NUMTHREADS; i++){
             threads[i].start();
+            Thread.sleep(100);
 
         }
 
@@ -84,40 +83,40 @@ public class Pinger {
         }
         Log.i(TAG, "Found device add "+ String.valueOf(resAddresses.size()));
 
+        DescoverDeviceRunable[] tasks1 = new DescoverDeviceRunable[resAddresses.size()];
+        ArrayList<Device> foundDev = new ArrayList<>(resAddresses.size());
+        myImageURL imageData = new myImageURL();
+        Thread[] threads1 = new Thread[resAddresses.size()];
 
-        ArrayList<Device> foundDev = new ArrayList<Device>(resAddresses.size());
-        myImageURL imageData=new myImageURL();
+        for(int i = 0; i < resAddresses.size(); i++){
+            tasks1[i] = new DescoverDeviceRunable(resAddresses.get(i), i, 1);
+            threads1[i] = new Thread(tasks1[i]);
 
-        String result="";
-        int loc=0;
-        for (InetAddress a: resAddresses){
-            foundDev.add(new Device(loc,a.getHostAddress(), getMacFromArpCache(a.getHostAddress()), a.getHostName(), imageData.drawableArray[1]));
-            loc++;
-            try {
-               NbtAddress[] netbios = NbtAddress.getAllByAddress(a.getHostAddress());
-                for (NbtAddress addr : netbios) {
-                   if (addr.getNameType() == 0x20) {
-                        foundDev.remove(loc-1);
-                        foundDev.add(new Device(loc,addr.getHostAddress(), getMacFromArpCache(addr.getHostAddress()), addr.getHostName(), imageData.drawableArray[1]));
+        }
+        //Starts threads
+        for(int i = 0; i < resAddresses.size(); i++){
+            threads1[i].start();
 
         }
 
+        for(int i = 0; i < resAddresses.size(); i++){
+            try{
+                threads1[i].join();
 
+            }catch(InterruptedException e){
+                e.printStackTrace();
+            }
+        }
 
+        for(int i = 0; i < resAddresses.size(); i++){
+            for(Device a: tasks1[i].getResults()){
 
-                   }
-        } catch (UnknownHostException e) {
-               e.printStackTrace();
+                foundDev.add(a);
             }
 
-
-
         }
-        Log.i(TAG, "Found device "+ String.valueOf(foundDev.size()));
 
         return foundDev;
-
-
     }
 
     /**

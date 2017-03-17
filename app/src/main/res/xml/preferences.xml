@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Search host"
+        android:key="sync_category">
+
+        <CheckBoxPreference
+            android:key="perform_autoSearch"
+            android:summary="Enable or disable Auto Search IP"
+            android:title="Enable Auto Search IP"
+            android:defaultValue="false"/>
+
+        <ListPreference
+            android:key="search_interval"
+            android:title="Search interval"
+            android:summary="Define how often sync will be performed"
+            android:defaultValue="1000"
+            android:entries="@array/updateInterval"
+            android:entryValues="@array/updateIntervalValues"
+            android:dependency="perform_autoSearch"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="Search Broadcast IP and Subnet Type"
+        android:key="personal_category">
+
+        <CheckBoxPreference
+            android:key="perform_subnetSearch"
+            android:summary="Enable or Disable Search by Subnet Type"
+            android:title="Enable  Search by Subnet"
+            android:defaultValue="false"/>
+
+        <EditTextPreference
+            android:key="IP"
+            android:title="Broadcast IP"
+            android:summary="Enter Your Broadcast IP or Max IP to Search"
+            android:dialogTitle="Your Broadcast IP"
+            android:dialogMessage="Enter Your Broadcast IP"
+            android:defaultValue="0"
+            android:inputType="textCapWords"
+            android:dependency="perform_subnetSearch"/>
+
+        <EditTextPreference
+            android:key="subnet"
+            android:title="Subnet Type"
+            android:summary="Enter Your Subnet type"
+            android:dialogTitle="Enter Your Subnet type"
+            android:dialogMessage="Enter Your Subnet type"
+            android:defaultValue="0"
+            android:dependency="perform_subnetSearch"/>
+
+    </PreferenceCategory>
+
+
+
+
+</PreferenceScreen>

@@ -1,7 +1,7 @@
 package com.app.yamamz.deviceipmacscanner.model;
 
 /**
- * Created by AMRI on 10/3/2016.
+ * Created by yamamz on 10/3/2016.
  */
 
 public class ScanResult {

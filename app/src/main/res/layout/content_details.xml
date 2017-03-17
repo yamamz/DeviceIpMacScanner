@@ -254,8 +254,33 @@
                 android:id="@+id/ping"/>
         </LinearLayout>
 
+    </LinearLayout>
+    <LinearLayout
+android:id="@+id/row6"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@+id/row5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:orientation="horizontal">
 
+        <ImageView
+            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_settings_input_composite_white_36dp"/>
 
+        <TextView
+
+            android:padding="10dp"
+            android:id="@+id/btnWOL"
+            android:textColor="@color/colorAccent"
+            android:layout_marginLeft="@dimen/Icon_margin"
+            android:textSize="@dimen/TextDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wake On LAN"
+          />
 
     </LinearLayout>
 
@@ -264,12 +289,12 @@
         android:id="@+id/progressdetails"
         android:layout_centerInParent="true"
         style="@style/Widget.AppCompat.ProgressBar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <android.support.v7.widget.RecyclerView
 
-        android:layout_below="@+id/row5"
+        android:layout_below="@+id/row6"
         android:id="@+id/listPort1"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
