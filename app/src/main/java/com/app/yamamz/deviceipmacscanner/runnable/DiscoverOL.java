@@ -1,4 +1,4 @@
-package com.app.yamamz.deviceipmacscanner.controller;
+package com.app.yamamz.deviceipmacscanner.runnable;
 
 import android.util.Log;
 
@@ -14,7 +14,6 @@ import java.util.List;
 public class DiscoverOL implements Runnable {
 
     private static final String CMD = "/system/bin/ping -q -n -w 1 -c 1 %s";
-    //private static final String CMD = "/system/bin/ping -c 1 %s";
     private static final String TAG = "DiscoverRunner";
     private List<Boolean> results;
 
@@ -55,9 +54,7 @@ public class DiscoverOL implements Runnable {
                         }
 
                         else{
-
                             results.add(false);
-
                         }
                     } catch (IOException ioe) {
 
@@ -72,59 +69,6 @@ public class DiscoverOL implements Runnable {
 
 
             }
-
-
-        /*    try {
-
-
-                if(Ping.onAddress(subnet).setTimeOutMillis(timeout).doPing().isReachable){
-
-                    results.add(true);
-                }
-
-                else if(!Ping.onAddress(subnet).setTimeOutMillis(timeout).doPing().isReachable){
-
-                    results.add(false);
-                }
-            } catch (UnknownHostException e) {
-
-                results.add(false);
-                e.printStackTrace();
-            }
-
-*/
-
-      /*  try {
-                Process exec = Runtime.getRuntime().exec(String.format(CMD, host));
-                int i1 = exec.waitFor();
-                if (i1 == 0){
-                    InetAddress a = InetAddress.getByName(host);
-                    Log.i(TAG, "run: "+ a.getHostAddress());
-                    Log.i(TAG, "runs: "+ a.getCanonicalHostName());
-                    results.add(a);
-                }else {
-                    throw new IOException("Unable to get ping from runtime");
-                }
-
-
-            } catch (IOException | InterruptedException e) {
-                try {
-                    InetAddress a = InetAddress.getByName(host);
-
-
-                    if (a.isReachable(timeout)) {
-                        results.add(a);
-                    }
-                } catch (IOException ioe) {
-                    ioe.printStackTrace();
-                }
-
-
-
-
-            }
-
-*/
 
         }
 

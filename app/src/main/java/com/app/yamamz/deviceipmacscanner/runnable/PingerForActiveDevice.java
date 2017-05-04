@@ -1,4 +1,4 @@
-package com.app.yamamz.deviceipmacscanner.controller;
+package com.app.yamamz.deviceipmacscanner.runnable;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -59,17 +59,11 @@ public class PingerForActiveDevice {
         myImageURL imageData = new myImageURL();
 
         for (Device devices : realm.where(Device.class).findAll()) {
-
             int i=0;
-
             AllDevices.add(new Device(i, devices.getIpAddress(), devices.getMacAddress(), devices.getDeviceName(), devices.getImage(),devices.getTextColorIP(),devices.getTextColorMac(),devices.getTextColorDeviceName(),devices.getTextColorMacVendor()));
-
             i++;
         }
 
-
-        //  EntityService userService = new EntityService(context, Device.class);
-       // allDevice = userService.get()
 
     NUMTHREADS = AllDevices.size();
 

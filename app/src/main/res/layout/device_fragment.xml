@@ -1,91 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
-<RelativeLayout
-    android:clickable="true"
-    android:focusable="true"
-    android:background="@drawable/riffle_effects"
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="2dp">
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="1dp"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp"
+    >
 
-    <android.support.v7.widget.LinearLayoutCompat
-android:paddingTop="2dp"
-        android:layout_width="wrap_content"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="1dp">
 
-        <ImageView
-            android:padding="4dp"
-            android:id="@+id/deviceLogo"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_width="wrap_content"
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-           />
+            tools:layout_editor_absoluteX="29dp"
+            tools:layout_editor_absoluteY="23dp">
 
-        <RelativeLayout
-
-            android:layout_alignLeft="@+id/deviceLogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="2dp">
-
-            <TextView
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:id="@+id/deviceIp"
-                android:text="@string/ipPlaceholder"
-                android:textSize="12sp"
+            <ImageView
+                android:id="@+id/deviceLogo"
                 android:layout_width="wrap_content"
-                android:textColor="@color/colorText"
-                android:layout_height="wrap_content"/>
+                android:layout_height="0dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="153dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:padding="4dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+
             <TextView
-                android:layout_below="@+id/deviceIp"
-                android:layout_alignParentRight="true"
-                android:text=""
-                android:id="@+id/deviceMacvendor"
-                android:textSize="12sp"
+                android:id="@+id/deviceIp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorText"
-                />
+                android:text="@string/ipPlaceholder"
+
+                android:textSize="12sp"
+                tools:layout_conversion_absoluteHeight="14dp"
+                tools:layout_conversion_absoluteWidth="46dp"
+                tools:layout_conversion_absoluteX="333dp"
+                tools:layout_conversion_absoluteY="4dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="8dp" />
 
 
             <TextView
 
-                android:layout_alignParentLeft="true"
-                android:layout_marginBottom="5dp"
                 android:id="@+id/macAdd"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:text="@string/macHolder"
                 android:textSize="12sp"
-                android:layout_below="@id/deviceIp"
-                android:layout_width="wrap_content"
-                android:textColor="@color/colorAccent"
-                android:layout_height="wrap_content"/>
+                tools:layout_conversion_absoluteHeight="14dp"
+                tools:layout_conversion_absoluteWidth="68dp"
+                tools:layout_conversion_absoluteX="4dp"
+                tools:layout_conversion_absoluteY="18dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/deviceName"
+                android:layout_marginLeft="0dp"
+                app:layout_constraintLeft_toLeftOf="@+id/deviceName" />
 
             <TextView
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:text="@string/deviceName"
                 android:id="@+id/deviceName"
-                android:textSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorText"
-                />
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="0dp"
+                android:text="@string/deviceName"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@+id/deviceLogo"
+                app:layout_constraintTop_toTopOf="@+id/deviceLogo"
+                tools:layout_conversion_absoluteHeight="14dp"
+                tools:layout_conversion_absoluteWidth="32dp"
+                tools:layout_conversion_absoluteX="4dp"
+                tools:layout_conversion_absoluteY="4dp" />
 
+        </android.support.constraint.ConstraintLayout>
 
+    </android.support.v7.widget.CardView>
 
-
-
-
-        </RelativeLayout>
-    </android.support.v7.widget.LinearLayoutCompat>
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
 

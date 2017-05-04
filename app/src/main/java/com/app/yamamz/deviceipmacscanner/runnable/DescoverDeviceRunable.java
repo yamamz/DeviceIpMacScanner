@@ -1,8 +1,8 @@
-package com.app.yamamz.deviceipmacscanner.controller;
+package com.app.yamamz.deviceipmacscanner.runnable;
 
 import android.util.Log;
+
 import com.app.yamamz.deviceipmacscanner.model.Device;
-import jcifs.netbios.NbtAddress;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -11,6 +11,8 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.LinkedList;
 import java.util.List;
+
+import jcifs.netbios.NbtAddress;
 
 /**
  * Created by Yamamz on 10/11/2016.
@@ -50,29 +52,21 @@ public class DescoverDeviceRunable implements Runnable  {
                     for (NbtAddress addr : netbios) {
                         if (addr.getNameType() == 0x20) {
                             results.remove(loc-1);
-                           results.add(new Device(startAdd,addr.getHostAddress(), getMacFromArpCache(addr.getHostAddress()), addr.getHostName(), imageData.drawableArray[1],imageData.TextColor[2],imageData.TextColor[1],imageData.TextColor[2],imageData.TextColor[2]));
+                            results.add(new Device(startAdd,addr.getHostAddress(), getMacFromArpCache(addr.getHostAddress()), addr.getHostName(), imageData.drawableArray[1],imageData.TextColor[2],imageData.TextColor[1],imageData.TextColor[2],imageData.TextColor[2]));
+                            Log.i(TAG, "Devices found "+ results.get(loc-1));
                         }
-
-
-
-
 
                     }
                 } catch (UnknownHostException e) {
                     e.printStackTrace();
                 }
-
-
-
             }
 
-
         try {
-            Thread.sleep(500);
+            Thread.sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
 
         Log.i(TAG, "Devices found "+ results.size());
     }

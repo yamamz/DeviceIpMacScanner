@@ -1,4 +1,4 @@
-package com.app.yamamz.deviceipmacscanner.controller;
+package com.app.yamamz.deviceipmacscanner.runnable;
 
 import android.app.Activity;
 import android.database.Cursor;
@@ -27,6 +27,7 @@ public class Host {
         try {
             if (cursor != null && cursor.moveToFirst()) {
                 vendor = cursor.getString(cursor.getColumnIndex("vendor"));
+
             } else {
                 vendor = "Vendor not in database";
             }
@@ -36,6 +37,8 @@ public class Host {
                 db.close();
             }
         }
+
+
 
         return vendor;
     }

@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app.yamamz.deviceipmacscanner.R;
-import com.app.yamamz.deviceipmacscanner.controller.Host;
 import com.app.yamamz.deviceipmacscanner.model.Device;
+import com.app.yamamz.deviceipmacscanner.runnable.Host;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,12 +64,15 @@ public class NetDeviceAdapter extends  RecyclerView.Adapter<NetDeviceAdapter.Vie
         Device address = addresses.get(i);
         viewHolder.deviceName.setText(address.getDeviceName());
         viewHolder.deviceIp.setText(address.getIpAddress());
-        viewHolder.macAdd.setText(address.getMacAddress());
         viewHolder.imageView.setImageResource(address.getImage());
+        viewHolder.macAdd.setText(viewHolder.macAdd.getText());
+
+        viewHolder.macAdd.setText(address.getMacAddress());
+
         viewHolder.deviceName.setTextColor(ContextCompat.getColor(mContext, address.getTextColorDeviceName()));
         viewHolder.deviceIp.setTextColor(ContextCompat.getColor(mContext, address.getTextColorIP()));
         viewHolder.macAdd.setTextColor(ContextCompat.getColor(mContext, address.getTextColorMac()));
-        viewHolder.macVendor.setTextColor(ContextCompat.getColor(mContext, address.getTextColorMacVendor()));
+
 
         /** Get macVendor from Mac Address from database
          *  if mac is not Empty
@@ -77,10 +80,11 @@ public class NetDeviceAdapter extends  RecyclerView.Adapter<NetDeviceAdapter.Vie
 
         String mac=viewHolder.macAdd.getText().toString();
         if(!mac.equals("")){
-            viewHolder.macVendor.setText(Host.getMacVendor(viewHolder.macAdd.getText().toString().replace(":", "").substring(0, 6), (Activity) mContext));
+
+            viewHolder.macAdd.setText("["+viewHolder.macAdd.getText()+"]"+Host.getMacVendor(viewHolder.macAdd.getText().toString().replace(":", "").substring(0, 6), (Activity) mContext));
         }
         else if(mac.equals("")){
-            viewHolder.macVendor.setText("");
+            viewHolder.macAdd.setText("");
         }
 
 
@@ -96,7 +100,7 @@ public class NetDeviceAdapter extends  RecyclerView.Adapter<NetDeviceAdapter.Vie
                 viewHolder.deviceName.setTextColor(ContextCompat.getColor(mContext, R.color.gray));
                 viewHolder.deviceIp.setTextColor(ContextCompat.getColor(mContext, R.color.gray));
                 viewHolder.macAdd.setTextColor(ContextCompat.getColor(mContext, R.color.gray));
-                viewHolder.macVendor.setTextColor(ContextCompat.getColor(mContext, R.color.gray));
+
             }
 
         }
@@ -141,7 +145,8 @@ public class NetDeviceAdapter extends  RecyclerView.Adapter<NetDeviceAdapter.Vie
         private TextView deviceName;
         private TextView deviceIp;
         private TextView macAdd;
-        private TextView macVendor;
+
+
         private ImageView imageView;
         private ViewHolder(View itemView) {
             super(itemView);
@@ -150,7 +155,6 @@ public class NetDeviceAdapter extends  RecyclerView.Adapter<NetDeviceAdapter.Vie
             deviceIp = (TextView) itemView.findViewById(R.id.deviceIp);
             macAdd = (TextView)itemView.findViewById(R.id.macAdd);
             imageView=(ImageView) itemView.findViewById(R.id.deviceLogo);
-            macVendor=(TextView) itemView.findViewById(R.id.deviceMacvendor);
             mContext = itemView.getContext();
 
         }

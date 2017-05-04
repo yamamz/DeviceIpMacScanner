@@ -1,4 +1,4 @@
-package com.app.yamamz.deviceipmacscanner.controller;
+package com.app.yamamz.deviceipmacscanner.runnable;
 
 import android.util.Log;
 
@@ -45,20 +45,7 @@ import java.util.List;
                 String address = InetRange.intToIp(i);
 
 
-               /* try {
-                    InetAddress a = InetAddress.getByName(address);
 
-                    if(Ping.onAddress(address).setTimeOutMillis(timeout).doPing().isReachable){
-                        results.add(a);
-                    }
-
-
-
-
-                } catch (UnknownHostException e) {
-                    e.printStackTrace();
-                }
-*/
 
 
         try {
