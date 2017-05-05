@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 import com.app.yamamz.deviceipmacscanner.model.Port;
 import com.app.yamamz.deviceipmacscanner.model.ScanResult;
-import com.app.yamamz.deviceipmacscanner.view.PortsAdapter;
+import com.app.yamamz.deviceipmacscanner.adapter.PortsAdapter;
 import com.stealthcopter.networktools.Ping;
 import com.stealthcopter.networktools.WakeOnLan;
 import com.stealthcopter.networktools.ping.PingResult;

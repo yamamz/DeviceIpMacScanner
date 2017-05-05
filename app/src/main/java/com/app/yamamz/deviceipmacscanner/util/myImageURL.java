@@ -1,4 +1,4 @@
-package com.app.yamamz.deviceipmacscanner.runnable;
+package com.app.yamamz.deviceipmacscanner.util;
 
 import com.app.yamamz.deviceipmacscanner.R;
 

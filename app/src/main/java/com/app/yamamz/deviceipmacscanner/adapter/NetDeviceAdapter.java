@@ -1,4 +1,4 @@
-package com.app.yamamz.deviceipmacscanner.view;
+package com.app.yamamz.deviceipmacscanner.adapter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.app.yamamz.deviceipmacscanner.R;
 import com.app.yamamz.deviceipmacscanner.model.Device;
-import com.app.yamamz.deviceipmacscanner.runnable.Host;
+import com.app.yamamz.deviceipmacscanner.util.Host;
 
 import java.util.ArrayList;
 import java.util.List;

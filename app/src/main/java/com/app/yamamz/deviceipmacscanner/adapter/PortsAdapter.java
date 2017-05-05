@@ -1,4 +1,4 @@
-package com.app.yamamz.deviceipmacscanner.view;
+package com.app.yamamz.deviceipmacscanner.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

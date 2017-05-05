@@ -1,15 +1,16 @@
-package com.app.yamamz.deviceipmacscanner;
+package com.app.yamamz.deviceipmacscanner.Azync;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 
+import com.app.yamamz.deviceipmacscanner.MainActivity;
 import com.app.yamamz.deviceipmacscanner.model.Device;
 import com.app.yamamz.deviceipmacscanner.runnable.Pinger;
 import com.app.yamamz.deviceipmacscanner.runnable.PingerSubnet;
 import com.app.yamamz.deviceipmacscanner.util.Subnet;
-import com.app.yamamz.deviceipmacscanner.view.NetDeviceAdapter;
+import com.app.yamamz.deviceipmacscanner.adapter.NetDeviceAdapter;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;

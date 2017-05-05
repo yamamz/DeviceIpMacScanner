@@ -3,6 +3,7 @@ package com.app.yamamz.deviceipmacscanner.runnable;
 import android.util.Log;
 
 import com.app.yamamz.deviceipmacscanner.model.Device;
+import com.app.yamamz.deviceipmacscanner.util.myImageURL;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

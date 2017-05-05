@@ -2,6 +2,8 @@ package com.app.yamamz.deviceipmacscanner.runnable;
 
 import android.util.Log;
 
+import com.app.yamamz.deviceipmacscanner.util.myImageURL;
+
 import java.io.IOException;
 import java.net.InetAddress;
 import java.util.LinkedList;

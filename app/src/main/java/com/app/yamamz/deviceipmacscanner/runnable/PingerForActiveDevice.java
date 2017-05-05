@@ -5,7 +5,7 @@ import android.content.Context;
 
 import com.app.yamamz.deviceipmacscanner.R;
 import com.app.yamamz.deviceipmacscanner.model.Device;
-
+import com.app.yamamz.deviceipmacscanner.util.myImageURL;
 
 
 import java.util.ArrayList;

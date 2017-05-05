@@ -1,4 +1,4 @@
-package com.app.yamamz.deviceipmacscanner.runnable;
+package com.app.yamamz.deviceipmacscanner.util;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
