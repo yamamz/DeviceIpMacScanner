@@ -18,20 +18,32 @@ public class Pinger {
     private static final int NUMTHREADS = 254;
     private static List<Device> foundDev = new ArrayList<>();
     private static final String TAG = "DiscoverRunner";
-    final static DiscoverRunner[] tasks = new DiscoverRunner[NUMTHREADS];
+
 
 
 
     public static List<Device> getDevicesOnNetwork(String subnet) throws InterruptedException, SocketException {
 
-        ExecutorService executorService = Executors.newFixedThreadPool(NUMTHREADS);
+        int[] bounds = rangeFromCidr(subnet);
+        int count=0;
+        for(int i = bounds[0]; i <=bounds[1]; i++){
+            count++;
+
+        }
+        final int NUMTHREADS = count;
+        final DiscoverRunner[] tasks = new DiscoverRunner[NUMTHREADS];
+        int count2=-1;
+        ExecutorService executorService= Executors.newCachedThreadPool();
         if (!executorService.isShutdown()) {
-            for (int i = 0; i < NUMTHREADS; i++) {
-                tasks[i] = new DiscoverRunner(subnet, i, 254 / NUMTHREADS);
-                executorService.execute(tasks[i]);
+            for (int h = bounds[0]; h <= bounds[1]; h++) {
+                count2++;
+                tasks[count2] = new DiscoverRunner(h, 1);
+                executorService.execute(tasks[count2]);
                 Thread.sleep(30);
             }
+
         }
+
 
 executorService.execute(new Runnable() {
     @Override
@@ -57,6 +69,19 @@ executorService.execute(new Runnable() {
         return foundDev;
     }
 
+    public static int[] rangeFromCidr(String cidrIp) {
+        int maskStub = 1 << 31;
+        String[] atoms = cidrIp.split("/");
+        int mask = Integer.parseInt(atoms[1]);
+        System.out.println(mask);
 
+        int[] result = new int[2];
+        result[0] = DiscoverBySubNet.InetRange.ipToInt(atoms[0]) & (maskStub >> (mask - 1)); // lower bound
+        result[1] = DiscoverBySubNet.InetRange.ipToInt(atoms[0]); // upper bound
+        System.out.println(DiscoverBySubNet.InetRange.intToIp(result[0]));
+        System.out.println(DiscoverBySubNet.InetRange.intToIp(result[1]));
+
+        return result;
+    }
 
 }

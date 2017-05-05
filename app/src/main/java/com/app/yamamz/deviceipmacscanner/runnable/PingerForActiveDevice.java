@@ -66,18 +66,12 @@ public class PingerForActiveDevice {
 
 
     NUMTHREADS = AllDevices.size();
-
     DiscoverOL[] tasks = new DiscoverOL[NUMTHREADS];
-
-
         Thread[] threads = new Thread[NUMTHREADS];
-
-
         //Create Tasks and treads
         for (int i = 0; i < AllDevices.size();i++) {
             tasks[i] = new DiscoverOL(AllDevices.get(i).getIpAddress(), i, 1);
             threads[i] = new Thread(tasks[i]);
-
         }
         //Starts threads
         for (int i = 0; i < NUMTHREADS;i++) {
@@ -101,19 +95,15 @@ public class PingerForActiveDevice {
               for(Boolean res:tasks[i].getResults())
 
                 {
-
                     if(!res){
-                        resAddresses.add(R.drawable.ic_devices_blue_grey_500_18dp);
+                        resAddresses.add(R.drawable.ic_devices_blue_grey_600_36dp);
                         ipTextColor.add(R.color.gray);
                         MacTextColor.add(R.color.gray);
                         DeviceNameTextColor.add(R.color.gray);
                         macVendorTextColor.add(R.color.gray);
                     }
-
                     else {
-
-                        resAddresses.add(R.drawable.ic_devices_light_green_a400_18dp);
-
+                        resAddresses.add(R.drawable.ic_devices_blue_a100_36dp);
                         ipTextColor.add(R.color.White);
                         MacTextColor.add(R.color.colorAccent);
                         DeviceNameTextColor.add(R.color.White);

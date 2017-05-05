@@ -3,10 +3,13 @@ package com.app.yamamz.deviceipmacscanner.view;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.text.Spannable;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,35 +62,36 @@ public class NetDeviceAdapter extends  RecyclerView.Adapter<NetDeviceAdapter.Vie
 
         ConnectivityManager connManager = (ConnectivityManager) mContext.getSystemService(CONNECTIVITY_SERVICE);
         NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            Device address = addresses.get(i);
+            viewHolder.deviceName.setText(address.getDeviceName());
+            viewHolder.deviceIp.setText(address.getIpAddress(), TextView.BufferType.SPANNABLE);
+            viewHolder.imageView.setImageResource(address.getImage());
+            viewHolder.macAdd.setText(viewHolder.macAdd.getText());
+            viewHolder.macAdd.setText(address.getMacAddress());
+            viewHolder.deviceName.setTextColor(ContextCompat.getColor(mContext, address.getTextColorDeviceName()));
+            viewHolder.deviceIp.setTextColor(ContextCompat.getColor(mContext, address.getTextColorIP()));
+            viewHolder.macAdd.setTextColor(ContextCompat.getColor(mContext, address.getTextColorMac()));
+            String ipString = viewHolder.deviceIp.getText().toString();
+            int lastdot = ipString.lastIndexOf(".");
 
 
-        Device address = addresses.get(i);
-        viewHolder.deviceName.setText(address.getDeviceName());
-        viewHolder.deviceIp.setText(address.getIpAddress());
-        viewHolder.imageView.setImageResource(address.getImage());
-        viewHolder.macAdd.setText(viewHolder.macAdd.getText());
+            Spannable s = (Spannable) viewHolder.deviceIp.getText();
+            int maxString = viewHolder.deviceIp.length();
+            s.setSpan(new ForegroundColorSpan(Color.GREEN), lastdot + 1, maxString, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-        viewHolder.macAdd.setText(address.getMacAddress());
+            /** Get macVendor from Mac Address from database
+             *  if mac is not Empty
+             */
 
-        viewHolder.deviceName.setTextColor(ContextCompat.getColor(mContext, address.getTextColorDeviceName()));
-        viewHolder.deviceIp.setTextColor(ContextCompat.getColor(mContext, address.getTextColorIP()));
-        viewHolder.macAdd.setTextColor(ContextCompat.getColor(mContext, address.getTextColorMac()));
+            String mac = viewHolder.macAdd.getText().toString();
+            if (!mac.equals("")) {
+
+                viewHolder.macAdd.setText(Host.getMacVendor(viewHolder.macAdd.getText().toString().replace(":", "").substring(0, 6), (Activity) mContext));
+            } else if (mac.equals("")) {
+                viewHolder.macAdd.setText("");
 
 
-        /** Get macVendor from Mac Address from database
-         *  if mac is not Empty
-         */
-
-        String mac=viewHolder.macAdd.getText().toString();
-        if(!mac.equals("")){
-
-            viewHolder.macAdd.setText("["+viewHolder.macAdd.getText()+"]"+Host.getMacVendor(viewHolder.macAdd.getText().toString().replace(":", "").substring(0, 6), (Activity) mContext));
         }
-        else if(mac.equals("")){
-            viewHolder.macAdd.setText("");
-        }
-
-
 
 
 /**

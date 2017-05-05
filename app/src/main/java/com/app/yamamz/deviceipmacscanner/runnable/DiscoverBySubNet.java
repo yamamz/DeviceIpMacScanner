@@ -25,12 +25,11 @@ import java.util.List;
         private static final String TAG = "DiscoverRunner";
         private List<InetAddress> results;
 
-    private String subnet;
+
     private Integer startAdd;
     private Integer numAdds;
 
-        public DiscoverBySubNet(String subnet, Integer start, Integer steps) {
-            this.subnet = subnet;
+        public DiscoverBySubNet(Integer start, Integer steps) {
             this.startAdd = start;
             this.numAdds = steps;
             results = new LinkedList<InetAddress>();

@@ -162,10 +162,10 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess() {
 
 
-                for (Device devices : realmDB.where(Device.class).findAllSorted("ipAddress", Sort.ASCENDING)) {
+                for (Device devices : realmDB.where(Device.class).findAllSorted("_id", Sort.ASCENDING)) {
 
                     int i = 0;
-                    AllDeviceSave.add(new Device(i, devices.getIpAddress(),
+                    AllDeviceSave.add(new Device(devices.get_id(), devices.getIpAddress(),
                             devices.getMacAddress(), devices.getDeviceName(), devices.getImage()
                             , devices.getTextColorIP(), devices.getTextColorMac(), devices.getTextColorDeviceName()
                             , devices.getTextColorMacVendor()));
@@ -240,13 +240,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void InitViews() {
-
         this.externalIp = (TextView) findViewById(R.id.externalIpAddress);
         this.signalStrength = (TextView) findViewById(R.id.signalStrength);
         this.ssid = (TextView) findViewById(R.id.ssid);
         this.bssid = (TextView) findViewById(R.id.bssid);
         ipExternal = (TextView) findViewById(R.id.externalIpAddress);
-
         ExternalIp = "";
     }
 
@@ -267,7 +265,6 @@ public class MainActivity extends AppCompatActivity {
 
                     } else {
                         mHandler.removeCallbacksAndMessages(null);
-
                         externalIp.setText(ExternalIp);
                         signalStrength.setText(R.string.noWifi);
                         ssid.setText(R.string.noWifi);
@@ -326,10 +323,12 @@ public class MainActivity extends AppCompatActivity {
         if (isFabShowing) {
             isFabShowing = false;
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+
                 final Point point = new Point();
                 this.getWindow().getWindowManager().getDefaultDisplay().getSize(point);
                 final float translation = fab.getY() - point.y;
                 fab.animate().translationYBy(-translation).start();
+
             } else {
                 Animation animation = AnimationUtils.makeOutAnimation(this, true);
                 animation.setFillAfter(true);
@@ -408,7 +407,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Device> AllDeviceSave = new ArrayList<Device>();
         for (Device devices : realmDB.where(Device.class).findAll()) {
             int i = 0;
-            AllDeviceSave.add(new Device(i, devices.getIpAddress(), devices.getMacAddress(), devices.getDeviceName(), imageData.drawableArray[0], imageData.TextColor[0], imageData.TextColor[0], imageData.TextColor[0], imageData.TextColor[0]));
+            AllDeviceSave.add(new Device(i, devices.getIpAddress(), devices.getMacAddress(), devices.getDeviceName(), myImageURL.drawableArray[0], myImageURL.TextColor[0], myImageURL.TextColor[0], myImageURL.TextColor[0], myImageURL.TextColor[0]));
 
             i++;
         }
@@ -423,30 +422,23 @@ public class MainActivity extends AppCompatActivity {
 
 
         } else {
-
-
             Toast.makeText(this, "Device is offline", Toast.LENGTH_LONG).show();
-
-
         }
     }
 
     void loadDeviceOnDatabase() {
-
         ArrayList<Device> AllDeviceSave = new ArrayList<>();
-        myImageURL imageData = new myImageURL();
-
-        for (Device devices : realmDB.where(Device.class).findAllSorted("ipAddress", Sort.ASCENDING)) {
-
+        for (Device devices : realmDB.where(Device.class).findAllSorted("_id", Sort.ASCENDING)) {
             int i = 0;
-            AllDeviceSave.add(new Device(i, devices.getIpAddress(), devices.getMacAddress(), devices.getDeviceName(), imageData.drawableArray[0], imageData.TextColor[0], imageData.TextColor[0], imageData.TextColor[0], imageData.TextColor[0]));
-
+            AllDeviceSave.add(new Device(i, devices.getIpAddress(), devices.getMacAddress(), devices.getDeviceName(), myImageURL.drawableArray[0], myImageURL.TextColor[0], myImageURL.TextColor[0], myImageURL.TextColor[0], myImageURL.TextColor[0]));
             i++;
         }
-
-
         adapter.setAddresses(AllDeviceSave);
         adapter.notifyDataSetChanged();
+        if(AllDeviceSave.size()<0) {
+            Toast.makeText(this, "the devices is not current please scan to update latest device", Toast.LENGTH_LONG).show();
+        }
+
     }
 
 
@@ -455,7 +447,6 @@ public class MainActivity extends AppCompatActivity {
         super.onPostResume();
         Realm.init(this);
         realmDB = Realm.getDefaultInstance();
-
     }
 
     /**
@@ -487,11 +478,8 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-
-
             Intent modifySettings = new Intent(MainActivity.this, Settings.class);
             startActivity(modifySettings);
-
             return true;
         }
 
@@ -524,11 +512,9 @@ public class MainActivity extends AppCompatActivity {
         realmDB.close();
 
         mHandler.removeCallbacksAndMessages(null);
-
         if (this.receiver != null) {
             unregisterReceiver(this.receiver);
         }
-
         if (pDialog != null && pDialog.isShowing()) {
             pDialog.dismiss();
         }
@@ -537,21 +523,14 @@ public class MainActivity extends AppCompatActivity {
 
     private class AsyncGetExternalIP extends AsyncTask<String, String, String> {
 
-        //the return string Value
         private String result;
-
-
         @Override
         protected String doInBackground(String... params) {
 
             try {
-
                 URL whatismyip = new URL("http://icanhazip.com");
                 BufferedReader in = new BufferedReader(new InputStreamReader(whatismyip.openStream()));
-
                 result = in.readLine(); //you get the IP as a String
-
-
             } catch (Exception e) {
                 e.printStackTrace();
                 result = e.getMessage();
@@ -559,11 +538,9 @@ public class MainActivity extends AppCompatActivity {
             return result;
         }
 
-
         @Override
         protected void onPostExecute(String result) {
             // execution of result of Long time consuming operation
-
             ipExternal.setText(result);
             ExternalIp = result;
         }
@@ -574,11 +551,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
-
-
         @Override
         protected void onProgressUpdate(String... text) {
-
 
         }
     }

@@ -4,10 +4,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
+
 import com.app.yamamz.deviceipmacscanner.model.Device;
 import com.app.yamamz.deviceipmacscanner.runnable.Pinger;
 import com.app.yamamz.deviceipmacscanner.runnable.PingerSubnet;
+import com.app.yamamz.deviceipmacscanner.util.Subnet;
 import com.app.yamamz.deviceipmacscanner.view.NetDeviceAdapter;
+
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -65,8 +68,14 @@ public class AsyncSearch extends AsyncTask<NetDeviceAdapter,Integer, List<Device
 
 
             try {
-
-                addresses = PingerSubnet.getDevicesOnNetwork(parseIPandSubnet);
+                Subnet subnet=new Subnet();
+                subnet.setIPAddress(ipString);
+                String Subnet=getSubnetMask(ipString);
+                subnet.setSubnetMask(Subnet);
+                String broadcast=subnet.getBroadcastAddress();
+                int bits=subnet.getMaskedBits();
+                String parse=broadcast+"/"+bits;
+                addresses = PingerSubnet.getDevicesOnNetwork(parse);
                 adapter = voids[0];
 
                 return addresses;
@@ -81,13 +90,16 @@ public class AsyncSearch extends AsyncTask<NetDeviceAdapter,Integer, List<Device
         } else {
 
 
-            int lastdot = ipString.lastIndexOf(".");
-            ipString = ipString.substring(0, lastdot);
-            //ipString="192.168.85";
             try {
+                Subnet subnet=new Subnet();
+                subnet.setIPAddress(ipString);
+                String Subnet=getSubnetMask(ipString);
+                subnet.setSubnetMask(Subnet);
+                String broadcast=subnet.getBroadcastAddress();
+                int bits=subnet.getMaskedBits();
+                String parse=broadcast+"/"+bits;
 
-
-                addresses = Pinger.getDevicesOnNetwork(ipString);
+                addresses = Pinger.getDevicesOnNetwork(parse);
 
                 adapter = voids[0];
 
@@ -143,5 +155,28 @@ public class AsyncSearch extends AsyncTask<NetDeviceAdapter,Integer, List<Device
         isSubnetSeachEnable = sharedPrefs.getBoolean("perform_subnetSearch", false);
         parseIPandSubnet = MaxIP + "/" + SubnetType;
     }
+
+String getSubnetMask(String ip){
+    String checkclass = ip.substring(0, 3);
+    int cc = Integer.parseInt(checkclass);
+    String mask = null;
+    if(cc>0 && cc<224)
+    {
+        if(cc<128)
+        {
+            mask = "255.0.0.0";
+        }
+        if(cc>127 && cc<192)
+        {
+            mask = "255.255.0.0";
+        }
+        if(cc>191)
+        {
+            mask = "255.255.255.0";
+        }
+    }
+
+    return mask;
+}
 
 }

@@ -41,12 +41,9 @@ public class Device extends RealmObject {
         this.textColorDeviceName=textColorDeviceName;
         this.textColorMacVendor=textColorMacVendor;
 
-
-
     }
 
     public Device() {
-
         this.ipAddress = String.valueOf("");
         this.macAddress = String.valueOf("");
         this.deviceName = String.valueOf("");

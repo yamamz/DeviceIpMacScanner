@@ -9,7 +9,7 @@ import com.app.yamamz.deviceipmacscanner.R;
 public  class myImageURL {
 
 
-   public static Integer[] drawableArray={R.drawable.ic_devices_light_green_a400_18dp,R.drawable.ic_devices_light_green_a400_18dp};
+   public static Integer[] drawableArray={R.drawable.ic_devices_blue_grey_600_36dp,R.drawable.ic_devices_blue_a100_36dp};
    public static Integer[] TextColor={R.color.gray,R.color.Black,R.color.Black};
 
 

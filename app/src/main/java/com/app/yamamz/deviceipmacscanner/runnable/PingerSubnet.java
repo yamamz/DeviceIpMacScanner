@@ -36,14 +36,12 @@ public class PingerSubnet {
         final LinkedList<InetAddress> resAddresses = new LinkedList<>();
         final DiscoverBySubNet[] tasks = new DiscoverBySubNet[NUMTHREADS];
         int count2=-1;
-
-
         ExecutorService executorService= Executors.newCachedThreadPool();
 
         //Create Tasks and treads
         for(int h = bounds[0]; h <= bounds[1]; h++){
-            count2++;
-                tasks[count2] = new DiscoverBySubNet(subnet, h, 1);
+                 count2++;
+                tasks[count2] = new DiscoverBySubNet(h, 1);
                 executorService.execute(tasks[count2]);
              Thread.sleep(40);
         }

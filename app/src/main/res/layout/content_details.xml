@@ -1,304 +1,284 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorPrimaryDark1"
+
     android:id="@+id/content_details"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_horizontal_margin1"
-    android:paddingLeft="@dimen/activity_horizontal_margin1"
-    android:paddingRight="@dimen/activity_horizontal_margin1"
-    android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.app.yamamz.deviceipmacscanner.DetailsActivity"
     tools:showIn="@layout/activity_details">
 
-    <LinearLayout
-        android:layout_marginLeft="15dp"
-        android:id="@+id/row1"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="5dp"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_perm_device_information_white_36dp"
-            />
-        <LinearLayout
-            android:layout_marginLeft="@dimen/Icon_margin"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-
-
-        <TextView
-
-
-
-            android:layout_centerInParent="true"
-            android:textColor="@color/White"
-            android:textSize="12sp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="IP ADDRESS"
-            android:id="@+id/ipAddressLabel"/>
-
-            <TextView
-                android:layout_centerInParent="true"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/TextDetails"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="IPAdd"
-                android:id="@+id/ipAddress"/>
-    </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginLeft="15dp"
-        android:id="@+id/row2"
-        android:layout_below="@+id/row1"
-        android:layout_marginBottom="5dp"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_settings_ethernet_white_36dp"
-            />
-        <LinearLayout
-            android:layout_marginLeft="@dimen/Icon_margin"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-
-
-            <TextView
-
-
-
-                android:layout_centerInParent="true"
-                android:textColor="@color/White"
-                android:textSize="12sp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="MAC ADDRESS"
-                android:id="@+id/macLabel"/>
-
-            <TextView
-                android:layout_centerInParent="true"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/TextDetails"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="IP"
-                android:id="@+id/macAddress"/>
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginLeft="15dp"
-        android:id="@+id/row3"
-        android:layout_below="@+id/row2"
-        android:layout_marginBottom="5dp"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_important_devices_white_36dp"
-            />
-        <LinearLayout
-            android:layout_marginLeft="@dimen/Icon_margin"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-
-
-            <TextView
-
-
-
-
-                android:textColor="@color/White"
-                android:textSize="12sp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="HOST NAME"
-                android:id="@+id/HostLabel"/>
-
-            <TextView
-
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/TextDetails"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="--"
-                android:id="@+id/hostAdd"/>
-        </LinearLayout>
-
-
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginLeft="15dp"
-        android:id="@+id/row4"
-        android:layout_below="@+id/row3"
-        android:layout_marginBottom="5dp"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_language_white_36dp"
-            />
-        <LinearLayout
-            android:layout_marginLeft="@dimen/Icon_margin"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-
-
-            <TextView
-
-
-
-
-                android:textColor="@color/White"
-                android:textSize="12sp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="EXTERNAL IP"
-                android:id="@+id/EXTERNAL_LABEL"/>
-
-            <TextView
-
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/TextDetails"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="--"
-                android:id="@+id/External"/>
-        </LinearLayout>
-
-
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_marginLeft="15dp"
-        android:id="@+id/row5"
-        android:layout_below="@+id/row4"
-        android:layout_marginBottom="5dp"
-        android:orientation="horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_compare_arrows_white_36dp"
-            />
-        <LinearLayout
-            android:layout_marginLeft="@dimen/Icon_margin"
-            android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-
-
-            <TextView
-
-
-
-                android:layout_centerInParent="true"
-                android:textColor="@color/White"
-                android:textSize="12sp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="PING"
-                android:id="@+id/PING_label"/>
-
-            <TextView
-                android:layout_centerInParent="true"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/TextDetails"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="--"
-                android:id="@+id/ping"/>
-        </LinearLayout>
-
-    </LinearLayout>
-    <LinearLayout
-android:id="@+id/row6"
-        android:layout_marginLeft="15dp"
-        android:layout_below="@+id/row5"
-        android:layout_width="match_parent"
+    <android.support.v7.widget.CardView android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorAccent"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        android:id="@+id/cardView">
 
-        <ImageView
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_settings_input_composite_white_36dp"/>
+        <android.support.constraint.ConstraintLayout
+            android:background="@color/colorPrimary1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_perm_device_information_white_36dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            android:padding="10dp"
-            android:id="@+id/btnWOL"
-            android:textColor="@color/colorAccent"
-            android:layout_marginLeft="@dimen/Icon_margin"
-            android:textSize="@dimen/TextDetails"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Wake On LAN"
-          />
 
-    </LinearLayout>
+            <TextView
 
+
+                android:id="@+id/ipAddressLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="0dp"
+                android:text="IP ADDRESS"
+                android:textColor="@color/Black"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+            <TextView
+                android:id="@+id/ipAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="0dp"
+                android:text="IPAdd"
+                android:textColor="@color/White"
+                android:textSize="@dimen/TextDetails"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                app:layout_constraintLeft_toLeftOf="@+id/ipAddressLabel" />
+
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="0dp"
+                android:src="@drawable/ic_settings_ethernet_white_36dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+
+            <TextView
+
+
+                android:id="@+id/macLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:text="MAC ADDRESS"
+                android:textColor="@color/Black"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toLeftOf="@+id/ipAddress"
+                app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+            <TextView
+                android:id="@+id/macAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="0dp"
+                android:text="IP"
+                android:textColor="@color/White"
+                android:textSize="@dimen/TextDetails"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                app:layout_constraintLeft_toLeftOf="@+id/macLabel" />
+
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="0dp"
+                android:src="@drawable/ic_loop_white_36dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+
+            <TextView
+
+
+                android:id="@+id/HostLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:text="HOST NAME"
+                android:textColor="@color/Black"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toLeftOf="@+id/macAddress"
+                app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+            <TextView
+
+                android:id="@+id/hostAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="0dp"
+                android:text="--"
+                android:textColor="@color/White"
+                android:textSize="@dimen/TextDetails"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+                app:layout_constraintLeft_toLeftOf="@+id/HostLabel" />
+
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="0dp"
+                android:src="@drawable/ic_language_white_36dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+
+            <TextView
+
+
+                android:id="@+id/EXTERNAL_LABEL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="0dp"
+                android:text="EXTERNAL IP"
+                android:textColor="@color/Black"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@+id/imageView5"
+                app:layout_constraintTop_toTopOf="@+id/imageView5" />
+
+            <TextView
+
+                android:id="@+id/External"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="0dp"
+                android:text="--"
+                android:textColor="@color/White"
+                android:textSize="@dimen/TextDetails"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+                app:layout_constraintLeft_toLeftOf="@+id/EXTERNAL_LABEL" />
+
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="0dp"
+                android:src="@drawable/ic_compare_arrows_white_36dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+
+            <TextView
+
+
+                android:id="@+id/PING_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="0dp"
+                android:text="PING"
+                android:textColor="@color/Black"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@+id/imageView6"
+                app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
+            <TextView
+                android:id="@+id/ping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="0dp"
+                android:text="--"
+                android:textColor="@color/White"
+                android:textSize="@dimen/TextDetails"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                app:layout_constraintLeft_toLeftOf="@+id/PING_label" />
+
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="0dp"
+                android:src="@drawable/ic_settings_input_composite_white_36dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+            <TextView
+
+                android:id="@+id/btnWOL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="0dp"
+                android:padding="10dp"
+                android:text="Wake On LAN"
+                android:textColor="@color/White"
+                android:textSize="@dimen/TextDetails"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                app:layout_constraintLeft_toRightOf="@+id/imageView"
+                app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+        </android.support.constraint.ConstraintLayout>
+ </android.support.v7.widget.CardView>
 
     <ProgressBar
         android:id="@+id/progressdetails"
-        android:layout_centerInParent="true"
         style="@style/Widget.AppCompat.ProgressBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cardView"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/listPort1"
+        android:layout_marginBottom="8dp" />
 
     <android.support.v7.widget.RecyclerView
-
-        android:layout_below="@+id/row6"
         android:id="@+id/listPort1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
         android:scrollbars="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
